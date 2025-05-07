@@ -3234,9 +3234,9 @@ input, select, textarea {
 			width: 100%;
 			height: 100%;
 			background-color: #212931;
-			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/mark.jpg");
-			background-size: auto,								auto,														50% auto;
-			background-position: center,								top center,														top center;
+			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/Sample.jpg");
+			background-size: auto,								auto,														100% auto;
+			background-position: center,								center,														top center;
 			background-repeat: repeat,								no-repeat,													no-repeat;
 			background-attachment: scroll,								scroll,														scroll;
 			z-index: -1;
@@ -3254,10 +3254,10 @@ input, select, textarea {
 			-webkit-transition: opacity 1s ease-in-out;
 			-ms-transition: opacity 1s ease-in-out;
 			transition: opacity 1s ease-in-out;
-			-moz-transition-delay: 0.50s;
-			-webkit-transition-delay: 0.50s;
-			-ms-transition-delay: 0.50s;
-			transition-delay: 0.50s;
+			-moz-transition-delay: 0.75s;
+			-webkit-transition-delay: 0.75s;
+			-ms-transition-delay: 0.75s;
+			transition-delay: 0.75s;
 			background: #1e252d;
 			content: '';
 			display: block;
@@ -3283,27 +3283,35 @@ input, select, textarea {
 
 /* Intro */
 
-#intro {
-    color: #ffffff;
-    padding: 8rem 4rem 6rem 4rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    transition: opacity 1s ease, transform 1s ease;
-    position: relative;
-    cursor: default;
-    text-align: center;
-    z-index: 1;
-    min-height: 100vh;
-
-    /* Background Image */
-    background-image: url("../images/background.jpg"); /* Update the path */
-    background-size: cover; /* Ensures the image covers the entire section */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents tiling */
-    background-attachment: fixed; /* Optional: Makes it stay fixed while scrolling */
-}
+	#intro {
+		color: #ffffff;
+		padding: 8rem 4rem 6rem 4rem ;
+		-moz-align-items: center;
+		-webkit-align-items: center;
+		-ms-align-items: center;
+		align-items: center;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-direction: column;
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		-moz-justify-content: -moz-flex-end;
+		-webkit-justify-content: -webkit-flex-end;
+		-ms-justify-content: -ms-flex-end;
+		justify-content: flex-end;
+		-moz-transition: opacity 1s ease, -moz-transform 1s ease;
+		-webkit-transition: opacity 1s ease, -webkit-transform 1s ease;
+		-ms-transition: opacity 1s ease, -ms-transform 1s ease;
+		transition: opacity 1s ease, transform 1s ease;
+		position: relative;
+		cursor: default;
+		text-align: center;
+		z-index: 1;
+		min-height: 100vh;
+	}
 
 		#intro input, #intro select, #intro textarea {
 			color: #ffffff;
@@ -3378,7 +3386,7 @@ input, select, textarea {
 				}
 
 		#intro h1 {
-			font-size: 5rem;
+			font-size: 3rem;
 			line-height: 1;
 		}
 
@@ -3576,7 +3584,7 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 
 			#header {
-				height: 14rem;
+				height: 10rem;
 				padding-bottom: 4rem;
 			}
 
@@ -3779,7 +3787,7 @@ input, select, textarea {
 			}
 
 			#main > .post header.major > h1, #main > .post header.major h2 {
-				font-size: 4rem;
+				font-size: 2.5rem;
 				line-height: 1.1;
 				margin: 0 0 2rem 0;
 			}
@@ -3808,7 +3816,7 @@ input, select, textarea {
 					}
 
 					#main > .post header.major > h1, #main > .post header.major h2 {
-						font-size: 2.5rem;
+						font-size: 2rem;
 						line-height: 1.2;
 						margin: 0 0 1.5rem 0;
 					}
@@ -4679,3 +4687,94 @@ input, select, textarea {
 		}
 
 	}
+	/* Dark overlay for intro background */
+#intro {
+    position: relative;
+    z-index: 1;
+}
+
+#intro {
+    position: relative;
+    z-index: 1;
+}
+
+#intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+}
+.image-swap-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9; /* Adjust ratio or use height: 400px; */
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.swap-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.swap-image.first {
+    z-index: 2;
+    animation-name: fade1;
+}
+
+.swap-image.second {
+    z-index: 1;
+    animation-name: fade2;
+}
+
+/* Define the fade animations */
+@keyframes fade1 {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade2 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
